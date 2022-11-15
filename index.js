@@ -1,0 +1,1 @@
+const db = mysql.createConnection('mysql://root:rootroot@localhost:3301/tracker_db')
