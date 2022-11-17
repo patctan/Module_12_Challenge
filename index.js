@@ -1,20 +1,25 @@
 const mysql = require('mysql2');
-const db = mysql.createConnection('mysql://root:rootroot@localhost:3301/tracker_db');
+// const db = mysql.createConnection('mysql://root:rootroot@localhost:3301/tracker_db');
 const inquirer = require('inquirer');
-const { allowedNodeEnvironmentFlags } = require('process');
+// const { allowedNodeEnvironmentFlags } = require('process');
 
 
 inquirer.prompt([{
     message: 'What would you like to do?',
     type: 'list',
-choices: ['Add department', 'Add role', 'Add employee', 'View departments', 'View roles', 'View employees', 'Update an employee role'],
-name: 'answer'
-}
+    choices: ['Add department', 'Add role', 'Add employee', 'View departments', 'View roles', 'View employees', 'Update an employee role'],
+    name: 'objective',
+},
 ])
-.then(init=> {
-    console.log(init.answer)
-    switch(init.answer) {
+// .then ((objective) => {
+//     console.log(objective);
+    
+// });
+.then((objective) =>  {
+    console.log(objective)
+    switch(objective) {
         case 'Add a department':
+            console.log('This is working');
             addDepartment();
         break;
         case 'Add a role':
