@@ -1,25 +1,45 @@
 const mysql = require('mysql2');
-// const db = mysql.createConnection('mysql://root:rootroot@localhost:3301/tracker_db');
+const db = mysql.createConnection('mysql://root:rootroot@localhost:3306/tracker_db');
 const inquirer = require('inquirer');
 // const { allowedNodeEnvironmentFlags } = require('process');
 
+// const db = mysql.createConnection(
+//     {
+//         host: 'localhost',
+
+//         user: 'root',
+
+//         password: '',
+
+//         database: 'tracker_db', 
+//     }
+// )
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "",
+    database: "tracker_db",
+  });
+  
+  connection.connect(function (err) {
+    if (err) throw err;
+    console.log("Connected as id" + connection.threadId);
+  });
 
 inquirer.prompt([{
     message: 'What would you like to do?',
     type: 'list',
-    choices: ['Add department', 'Add role', 'Add employee', 'View departments', 'View roles', 'View employees', 'Update an employee role'],
+    choices: ['Add a department', 'Add a role', 'Add an employee', 'View departments', 'View roles', 'View employees', 'Update an employee role'],
     name: 'objective',
 },
 ])
-// .then ((objective) => {
-//     console.log(objective);
-    
-// });
 .then((objective) =>  {
     console.log(objective)
-    switch(objective) {
+    switch(objective.objective) {
         case 'Add a department':
-            console.log('This is working');
+            console.log('This is working')
             addDepartment();
         break;
         case 'Add a role':
@@ -48,10 +68,10 @@ const addDepartment = () => {
     inquirer.prompt([{
         message: 'What is the name of the department?',
         type: 'input',
-        name: 'name',
+        name: 'departmentName',
     }])
-    .then(departmentName => {
-        console.log(departmentName)
+    .then(department => {
+        console.log(department)
         db.query('INSERT INTO department SET ?', departmentName, err=> {
             if(err) {console.log(err)}
         })
