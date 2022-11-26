@@ -68,11 +68,32 @@ const addDepartment = () => {
         })
         console.log('Yay! You just added the department!')
     })
+};
+
+const addRole = () => {
+    console.log('This is working')
+    inquirer.prompt([{
+        message: 'What is the title of the role?',
+        type: 'input',
+        name: 'title',
+    },
+    {   message: 'what is the id of the role?',
+        type: 'input',
+        name: 'department_id',},
+    {   message: 'what is the salary of the role?',
+        type: 'input',
+        name: 'salary',},
+    ])
+    .then(role => {
+        console.log(role)
+        db.query('INSERT INTO roles SET ?', role, err=> {
+            if(err) {console.log(err)}
+        })
+        console.log('Yay! You just added the role!')
+    })
 }};
 
 question();
-
-const addRole = () => {};
 
 const addEmployee = () => {};
 
