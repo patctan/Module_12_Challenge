@@ -1,31 +1,19 @@
 const mysql = require('mysql2');
-const db = mysql.createConnection('mysql://root:rootroot@localhost:3306/tracker_db');
 const inquirer = require('inquirer');
-// const { allowedNodeEnvironmentFlags } = require('process');
 
-// const db = mysql.createConnection(
-//     {
-//         host: 'localhost',
+const question = () => {
 
-//         user: 'root',
-
-//         password: '',
-
-//         database: 'tracker_db', 
-//     }
-// )
-
-const connection = mysql.createConnection({
+const db = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "",
+    password: "Dongka1993!",
     database: "tracker_db",
   });
   
-  connection.connect(function (err) {
+  db.connect(function (err) {
     if (err) throw err;
-    console.log("Connected as id" + connection.threadId);
+    console.log("Connected as id" + db.threadId);
   });
 
 inquirer.prompt([{
@@ -61,10 +49,10 @@ inquirer.prompt([{
             updateEmployeeRole();
 
     }
-})
+})};
 
 const addDepartment = () => {
-    console.log('You are adding a department')
+    console.log('This is working')
     inquirer.prompt([{
         message: 'What is the name of the department?',
         type: 'input',
@@ -72,12 +60,14 @@ const addDepartment = () => {
     }])
     .then(department => {
         console.log(department)
-        db.query('INSERT INTO department SET ?', departmentName, err=> {
+        db.query('INSERT INTO department SET ?', department, err=> {
             if(err) {console.log(err)}
         })
         console.log('Yay! You just added the department!')
     })
 };
+
+question();
 
 const addRole = () => {};
 
