@@ -8,6 +8,7 @@ id INT PRIMARY KEY NOT NULL,
 name VARCHAR(30) NOT NULL
 );
 
+USE tracker_db;
 
 CREATE TABLE roles (
     id INT PRIMARY KEY NOT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE roles (
     REFERENCES department(id)
 );
 
+USE tracker_db;
 
 CREATE TABLE employee (
     id INT PRIMARY KEY NOT NULL,
