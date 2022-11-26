@@ -7,7 +7,7 @@ const question = () => {
 
 const db = mysql.createConnection({
     host: "localhost",
-    // port: 3306,
+    port: 3306,
     user: "root",
     password: "Dongka1993!",
     database: "tracker_db",
