@@ -79,23 +79,49 @@ const addRole = () => {
     },
     {   message: 'what is the id of the role?',
         type: 'input',
-        name: 'department_id',},
+        name: 'department_id',
+    },
     {   message: 'what is the salary of the role?',
         type: 'input',
-        name: 'salary',},
-    ])
+        name: 'salary',
+    },])
     .then(role => {
         console.log(role)
         db.query('INSERT INTO roles SET ?', role, err=> {
             if(err) {console.log(err)}
         })
         console.log('Yay! You just added the role!')
-    })
-}};
+    })}
+
+    const addEmployee = () => {
+        console.log('This is working')
+        inquirer.prompt([{
+            message: 'What is the first name of the employee?',
+            type: 'input',
+            name: 'first_name',
+        },
+        {   
+            message: 'What is the last name of the employee?',
+            type: 'input',
+            name: 'last_name',},
+        {   
+            message: 'What is the role id of the employee?',
+            type: 'input',
+            name: 'role_id',
+        },
+        {   
+            message: 'Is the employee a manager?',
+            type: 'list',
+            choices: ['Yes', 'No'],
+            name: 'is_Manager'
+        }])
+        .then(employee => {
+            if(employee.is_Manager === 'Yes') (console.log('You are adding a manager'))
+            else if(employee.is_Manager === 'No') (console.log('You are adding a regular employee'))
+        })}
+};
 
 question();
-
-const addEmployee = () => {};
 
 const viewDepartments = () => {};
 
