@@ -1,11 +1,13 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
+
 
 const question = () => {
 
 const db = mysql.createConnection({
     host: "localhost",
-    port: 3306,
+    // port: 3306,
     user: "root",
     password: "Dongka1993!",
     database: "tracker_db",
@@ -21,7 +23,7 @@ inquirer.prompt([{
     type: 'list',
     choices: ['Add a department', 'Add a role', 'Add an employee', 'View departments', 'View roles', 'View employees', 'Update an employee role'],
     name: 'objective',
-},
+}
 ])
 .then((objective) =>  {
     console.log(objective)
@@ -47,16 +49,17 @@ inquirer.prompt([{
         break;
         case 'Update an employee role':
             updateEmployeeRole();
+        break;
 
     }
-})};
+});
 
 const addDepartment = () => {
     console.log('This is working')
     inquirer.prompt([{
         message: 'What is the name of the department?',
         type: 'input',
-        name: 'departmentName',
+        name: 'name',
     }])
     .then(department => {
         console.log(department)
@@ -65,7 +68,7 @@ const addDepartment = () => {
         })
         console.log('Yay! You just added the department!')
     })
-};
+}};
 
 question();
 
