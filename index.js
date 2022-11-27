@@ -115,11 +115,34 @@ const addRole = () => {
             choices: ['Yes', 'No'],
             name: 'is_Manager'
         }])
-        .then(employee => {
-            if(employee.is_Manager === 'Yes') (console.log('You are adding a manager'))
-            else if(employee.is_Manager === 'No') (console.log('You are adding a regular employee'))
-        })}
-};
+        .then(employee => { //open parentheses
+            if(employee.is_Manager === 'Yes') {
+            (console.log('You are adding a manager'))
+            delete employee.is_Manager;
+            db.query('INSERT INTO employee SET ?', employee, err=> {
+                if(err) {console.log(err)}
+            })
+            console.log('Yay! You just added the employee!');
+            question()
+        }
+            else if(employee.is_Manager === 'No') 
+            {console.log('You are adding a regular employee')}
+            inquirer.prompt([{
+                    message: 'What is the id of the manager of the employee?',
+                    type: 'input',
+                    name: 'manager_id'
+            }])
+            .then(subordinate => {
+                console.log(subordinate)
+                ([{
+                    first_name: 'Taeyeon',
+                    last_name: 'Kim',
+                    role_id: 1,
+                    manager_id: 1
+                }])
+            },
+        
+        )});
 
 question();
 
@@ -129,4 +152,4 @@ const viewRoles = () => {};
 
 const viewEmployees = () => {};
 
-const updateEmployeeRole = () => {};
+const updateEmployeeRole = () => {}}}
