@@ -16,8 +16,8 @@ VALUES ('Taeyeon', 'Kim', 1, 1),
        ('Jessica', 'Jung', 2, 2),
        ('Sooyoung', 'Choi', 3, 3),
        ('Yuri', 'Kwon', 4, 4),
-       ('Hyoyeon', 'Kim', 5, 5),
-       ('Sunny', 'Lee', 6, 6),
-       ('Yoona', 'Im', 7, 7),
-       ('Juhyun', 'Seo', 8, 8),
-       ('Tiffany', 'Young', 9, 9);
+       ('Hyoyeon', 'Kim', 1, 5),
+       ('Sunny', 'Lee', 2, 6),
+       ('Yoona', 'Im', 3, 7),
+       ('Juhyun', 'Seo', 4, 8),
+       ('Tiffany', 'Young', 4, 9);

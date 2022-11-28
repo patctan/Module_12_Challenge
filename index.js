@@ -188,5 +188,54 @@ const question = () => {
         // const updateEmployeeRole = () => {};
       });
   };
+  const updateEmployeeRole = () => {
+    inquirer
+      .prompt([
+        {
+          message: "What is the role id of the employee?",
+          type: "input",
+          name: "id",
+        },
+        {
+          message: "What is the new role id for the employee?",
+          type: "input",
+          name: "role_id",
+        },
+      ])
+      .then((employee) => {
+        db.query(
+          `UPDATE employee SET ? WHERE id = ${employee.id}`,
+          employee,
+          (err) => {
+            if (err) {
+              console.log(err);
+            }
+          }
+        );
+        console.log("You updated an employee!");
+        question();
+      });
+  };
+
+  const viewDepartments = () => {
+    db.query("SELECT * FROM department", (err, department) => {
+      console.table(department);
+      question();
+    });
+  };
+
+  const viewRoles = () => {
+    db.query("SELECT * FROM roles", (err, roles) => {
+      console.table(roles);
+      question();
+    });
+  };
+
+  const viewEmployees = () => {
+    db.query("SELECT * FROM employee", (err, employees) => {
+      console.table(employees);
+      question();
+    });
+  };
 };
 question();
