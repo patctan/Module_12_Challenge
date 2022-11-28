@@ -78,6 +78,7 @@ const question = () => {
           }
         });
         console.log("Yay! You just added the department!");
+        question();
       });
   };
 
@@ -108,6 +109,7 @@ const question = () => {
           }
         });
         console.log("Yay! You just added the role!");
+        question();
       });
   };
 
