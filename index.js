@@ -33,11 +33,11 @@ const question = () => {
         name: "objective",
       },
     ])
+    // Starts function depending on answer to the first question
     .then((objective) => {
       console.log(objective);
       switch (objective.objective) {
         case "Add a department":
-          console.log("This is working");
           addDepartment();
           break;
         case "Add a role":
@@ -62,7 +62,6 @@ const question = () => {
     });
 
   const addDepartment = () => {
-    console.log("This is working");
     inquirer
       .prompt([
         {
@@ -83,7 +82,6 @@ const question = () => {
   };
 
   const addRole = () => {
-    console.log("This is working");
     inquirer
       .prompt([
         {
@@ -114,7 +112,6 @@ const question = () => {
   };
 
   const addEmployee = () => {
-    console.log("This is working");
     inquirer
       .prompt([
         {
@@ -178,14 +175,6 @@ const question = () => {
             });
             console.log("You added an employee");
           });
-
-        // const viewDepartments = () => {};
-
-        // const viewRoles = () => {};
-
-        // const viewEmployees = () => {};
-
-        // const updateEmployeeRole = () => {};
       });
   };
   const updateEmployeeRole = () => {
